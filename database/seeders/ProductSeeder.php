@@ -24,6 +24,6 @@ class ProductSeeder extends Seeder
             "price" => 20,
             "image" => "child_category_img.jpg",
         ]);
-        $product->category()->attach($selectedCategoryId);
+        $product->categories()->attach($selectedCategoryId);
     }
 }
