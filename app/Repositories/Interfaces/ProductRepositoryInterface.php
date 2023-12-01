@@ -5,4 +5,5 @@ Interface ProductRepositoryInterface{
     
     public function allProducts($request);
     public function storeProduct($data);
+    public function getCategory();
 }

@@ -31,7 +31,11 @@ class ProductController extends Controller
      */
     public function store(ProductRequest $request)
     {
-        $product =  $this->productRepository->storeProduct($request->all());
+        $fileName = time() . '.' . $request->image->extension();
+        $request->image->storeAs('public/images', $fileName);
+        $data = $request->all();
+        $data['image'] = $fileName;
+        $product =  $this->productRepository->storeProduct($data);
         return $product;
     }
 
@@ -43,6 +47,11 @@ class ProductController extends Controller
         //
     }
 
+    public function categories(){
+        $categories =  $this->productRepository->getCategory();
+        return response()->json($categories,200);
+
+    }
     /**
      * Update the specified resource in storage.
      */

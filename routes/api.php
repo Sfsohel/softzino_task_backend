@@ -21,4 +21,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 Route::post('/register', [AuthController::class, 'createUser'])->name('admin.register');
 Route::post('/login', [AuthController::class, 'loginUser'])->name('admin.login');
-Route::apiResource('product',  ProductController::class)->middleware('auth:sanctum');
+// Route::apiResource('product',  ProductController::class)->middleware('auth:sanctum');
+Route::get('/get-category', [ProductController::class, 'categories'])->name('admin.categories');
+Route::apiResource('product',  ProductController::class);
